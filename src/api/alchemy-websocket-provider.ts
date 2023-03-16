@@ -676,7 +676,15 @@ export class AlchemyWebSocketProvider
 
   /** @internal */
   private emitNewHeadsEvent(virtualId: string, result: NewHeadsEvent): void {
-    this.emitAndRememberEvent(virtualId, result, getNewHeadsBlockNumber);
+    try
+    {
+      if(result !=undefined && result != null)
+      {
+          this.emitAndRememberEvent(virtualId, result, getNewHeadsBlockNumber);
+      }
+    }catch(error)
+    {
+    }
   }
 
   /** @internal */
